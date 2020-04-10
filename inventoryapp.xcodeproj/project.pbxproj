@@ -106,8 +106,6 @@
 		5495EEC41E1310F400040DD1 = {
 			isa = PBXGroup;
 			children = (
-				549788881FFB41DD002F74B5 /* InventoryItem+CoreDataClass.swift */,
-				549788891FFB41DD002F74B5 /* InventoryItem+CoreDataProperties.swift */,
 				5495EECF1E1310F400040DD1 /* inventoryapp */,
 				545D55BA1EA9201D002867D7 /* inventoryappUITests */,
 				549858221EAEF7CB000F5513 /* inventoryappTests */,
@@ -205,6 +203,8 @@
 		639FA9BE2440D39C0030D2E9 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				549788881FFB41DD002F74B5 /* InventoryItem+CoreDataClass.swift */,
+				549788891FFB41DD002F74B5 /* InventoryItem+CoreDataProperties.swift */,
 				5495EED71E1310F400040DD1 /* inventoryapp.xcdatamodeld */,
 			);
 			path = "Core Data";
