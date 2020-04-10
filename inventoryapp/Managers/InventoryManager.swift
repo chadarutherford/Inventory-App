@@ -19,7 +19,7 @@ class InventoryManager: NSObject {
     var managedObjectContext:NSManagedObjectContext
     var items:[InventoryItem]
     
-    override init(){
+    @discardableResult override init(){
         managedObjectContext = appDelegate.persistentContainer.viewContext
         let itemsFetch = NSFetchRequest<NSFetchRequestResult>(entityName: InventoryManager.entityName)
         itemsFetch.sortDescriptors = [

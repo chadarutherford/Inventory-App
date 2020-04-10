@@ -16,7 +16,7 @@ class inventoryappTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         if InventoryManager.getCount() != 4 {
-            let _ = InventoryManager()
+            InventoryManager()
         }
     }
     
@@ -61,37 +61,33 @@ class inventoryappTests: XCTestCase {
         XCTAssertEqual(newItem.units, 4)
         XCTAssertEqual(newItem.manufacturerName, "Nissan")
     }
-    
-    func testAddItem35DaysOldVerifyOlderThan25(){
-        InventoryManager.shared.items = []
-        let preferenceDays = 25
-        PreferenceManager.setDaysOlderThan(days: preferenceDays)
-        let itemDays  = 35
-        let daysLater = NSCalendar.current.date(byAdding: Calendar.Component.day, //here you can add year, month, hour, etc.
-            value: -itemDays, //HEre you can add number of units
-             to: Date())
-        let item = InventoryItem(name: "Sentra2", units: 4, manufacturerName: "Nissan", date: daysLater!)
-        InventoryManager.add(item: item)
-        let newitems = InventoryManager.olderThanDays()
-        XCTAssertGreaterThanOrEqual(newitems.count, 1, "An item is not older than \(preferenceDays) days")
-    }
-    
-    func testAddItem25DaysOldVerifyNotOlderThan30() {
-        InventoryManager.shared.items = []
-        let preferenceDays = 30
-        PreferenceManager.setDaysOlderThan(days: preferenceDays)
-        let itemDays  = 25
-        let daysLater = NSCalendar.current.date(byAdding: Calendar.Component.day, //here you can add year, month, hour, etc.
-            value: -itemDays, //HEre you can add number of units
-            to: Date())
-        let item = InventoryItem(name: "Sentra2", units: 4, manufacturerName: "Nissan", date: daysLater!)
-        InventoryManager.add(item: item)
-        let newitems = InventoryManager.olderThanDays()
-        XCTAssertEqual(newitems.count, 0, "An item is older than \(preferenceDays) days")
-    }
-    
+	
+	func testAddItem35DaysOldVerifyOlderThan25() {
+		InventoryManager.shared.items = []
+		let preferenceDays = 25
+		PreferenceManager.setDaysOlderThan(days: preferenceDays)
+		let itemDays = 35
+		let daysLater = NSCalendar.current.date(byAdding: Calendar.Component.day, value: -itemDays, to: Date())
+		let item = InventoryItem(name: "Sentra 2", units: 4, manufacturerName: "Nissan", date: daysLater!)
+		InventoryManager.add(item: item)
+		let newItems = InventoryManager.olderThanDays()
+		XCTAssertGreaterThanOrEqual(newItems.count, 1, "An item is not older than \(preferenceDays) days")
+	}
+	
+	func testAddItem25DaysOldVerifyNotOlderThan30Days() {
+		InventoryManager.shared.items = []
+		let preferenceDays = 30
+		PreferenceManager.setDaysOlderThan(days: preferenceDays)
+		let itemDays = 25
+		let daysLater = NSCalendar.current.date(byAdding: Calendar.Component.day, value: -itemDays, to: Date())
+		let item = InventoryItem(name: "Sentra 2", units: 4, manufacturerName: "Nissan", date: daysLater!)
+		InventoryManager.add(item: item)
+		let newItems = InventoryManager.olderThanDays()
+		XCTAssertEqual(newItems.count, 0, "An item is older than \(preferenceDays) days")
+	}
+	
     //START: unit tests
-    func testDeleteItem(){
+    func testDeleteItem() {
         InventoryManager.delete(index: 0)
         XCTAssertEqual(InventoryManager.getCount(), 3)
     }

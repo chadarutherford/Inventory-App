@@ -8,20 +8,20 @@ import CoreData
 
 @objc(InventoryItem)
 public class InventoryItem: NSManagedObject {
-    @NSManaged var name:String?
-    @NSManaged var units:Int32
-    @NSManaged var manufacturerName:String?
-    @NSManaged var logoUrl:String?
-    @NSManaged private var dateAdded:Date?
-    @NSManaged private var timeOut:Double
+    @NSManaged var name: String?
+    @NSManaged var units: Int32
+    @NSManaged var manufacturerName: String?
+    @NSManaged var logoUrl: String?
+    @NSManaged private var dateAdded: Date?
+    @NSManaged private var timeOut: Double
     
     //for fetches
     public override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
         super.init(entity: entity, insertInto: context)
     }
     
-    init(name:String, units:Int32, manufacturerName:String){
-        let appDelegate:AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
+    init(name: String, units: Int32, manufacturerName: String) {
+        let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
         let entityDescription = NSEntityDescription.entity(forEntityName: InventoryManager.entityName, in: appDelegate.persistentContainer.viewContext)
         super.init(entity: entityDescription!, insertInto: appDelegate.persistentContainer.viewContext)
         
@@ -33,12 +33,12 @@ public class InventoryItem: NSManagedObject {
         self.dateAdded = Date()
     }
     
-    convenience init(name:String, units:Int32, manufacturerName:String, date:Date){
-        self.init(name: name, units: units, manufacturerName: manufacturerName)
-        self.dateAdded = date
+    convenience init(name: String, units: Int32, manufacturerName: String, date: Date) {
+		self.init(name: name, units: units, manufacturerName: manufacturerName)
+		self.dateAdded = date
     }
     
-    func setDate(dateAdded:String){
+    func setDate(dateAdded: String) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         
@@ -47,11 +47,11 @@ public class InventoryItem: NSManagedObject {
     }
     
     //used when dateadded went private
-    func getDateAdded() -> Date{
+    func getDateAdded() -> Date {
         return self.dateAdded!
     }
     
-    func getImage(completion: @escaping (UIImage?) -> Void){
+    func getImage(completion: @escaping (UIImage?) -> Void) {
         let config = URLSessionConfiguration.default
         config.timeoutIntervalForResource = self.timeOut // timeout, in seconds
         //https://commons.wikimedia.org/wiki/File:%27Calypso%27_Panorama_of_Spirit%27s_View_from_%27Troy%27_(Stereo).jpg
@@ -77,7 +77,7 @@ public class InventoryItem: NSManagedObject {
         }.resume()
     }
     
-    func setTimeOut(timeOut:TimeInterval){
+    func setTimeOut(timeOut: TimeInterval) {
         self.timeOut = timeOut
     }
     
