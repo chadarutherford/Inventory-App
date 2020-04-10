@@ -24,6 +24,8 @@
 		5497888A1FFB41DD002F74B5 /* InventoryItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549788881FFB41DD002F74B5 /* InventoryItem+CoreDataClass.swift */; };
 		5497888B1FFB41DD002F74B5 /* InventoryItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549788891FFB41DD002F74B5 /* InventoryItem+CoreDataProperties.swift */; };
 		549858241EAEF7CB000F5513 /* inventoryappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549858231EAEF7CB000F5513 /* inventoryappTests.swift */; };
+		63C5E1312440F21500881B89 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C5E1302440F21500881B89 /* UserDefaultsProtocol.swift */; };
+		63C5E1332440FA8300881B89 /* UserDefaultsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C5E1322440FA8300881B89 /* UserDefaultsMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		549858211EAEF7CB000F5513 /* inventoryappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = inventoryappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		549858231EAEF7CB000F5513 /* inventoryappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inventoryappTests.swift; sourceTree = "<group>"; };
 		549858251EAEF7CB000F5513 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63C5E1302440F21500881B89 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
+		63C5E1322440FA8300881B89 /* UserDefaultsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 				639FA9BA2440D3750030D2E9 /* View */,
 				639FA9B92440D3640030D2E9 /* Controller */,
 				639FA9BF2440D3AB0030D2E9 /* Managers */,
+				63C5E12F2440F1F000881B89 /* Protocols */,
 				639FA9B82440D3500030D2E9 /* Support */,
 			);
 			path = inventoryapp;
@@ -140,6 +145,7 @@
 			children = (
 				549858231EAEF7CB000F5513 /* inventoryappTests.swift */,
 				549858251EAEF7CB000F5513 /* Info.plist */,
+				63C5E1322440FA8300881B89 /* UserDefaultsMock.swift */,
 			);
 			path = inventoryappTests;
 			sourceTree = "<group>";
@@ -217,6 +223,14 @@
 				5497887E1FF17FAF002F74B5 /* PreferenceManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		63C5E12F2440F1F000881B89 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				63C5E1302440F21500881B89 /* UserDefaultsProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,6 +387,7 @@
 				5495EED91E1310F400040DD1 /* inventoryapp.xcdatamodeld in Sources */,
 				5497888A1FFB41DD002F74B5 /* InventoryItem+CoreDataClass.swift in Sources */,
 				549788811FF184D4002F74B5 /* SettingsViewController.swift in Sources */,
+				63C5E1312440F21500881B89 /* UserDefaultsProtocol.swift in Sources */,
 				5495EEE81E13116400040DD1 /* DetailViewController.swift in Sources */,
 				5497887F1FF17FAF002F74B5 /* PreferenceManager.swift in Sources */,
 				5495EF0D1E132E0800040DD1 /* InventoryManager.swift in Sources */,
@@ -386,6 +401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63C5E1332440FA8300881B89 /* UserDefaultsMock.swift in Sources */,
 				549858241EAEF7CB000F5513 /* inventoryappTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
