@@ -71,7 +71,7 @@ public class InventoryItem: NSManagedObject {
             }
             var mydata = data
             if(data == nil){
-                mydata = UIImagePNGRepresentation(#imageLiteral(resourceName: "noimage"))
+                mydata = #imageLiteral(resourceName: "noimage").pngData()
             }
             completion(UIImage(data: mydata!)!)
         }.resume()

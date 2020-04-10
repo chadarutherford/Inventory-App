@@ -24,7 +24,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         super.viewWillAppear(animated)
         self.fontSize.value = Float(PreferenceManager.getFontSize())
         self.fontSizeDisplay.text = String(PreferenceManager.getFontSize())
-        self.daysOlderPicker.selectRow(InventoryManager.days.index(of: PreferenceManager.getDaysOlderThan())!, inComponent: 0, animated: true)
+        self.daysOlderPicker.selectRow(InventoryManager.days.firstIndex(of: PreferenceManager.getDaysOlderThan())!, inComponent: 0, animated: true)
     }
 
     @IBAction func fontSizeChange(_ sender: Any) {
