@@ -8,37 +8,39 @@ import CoreData
 
 @objc(InventoryItem)
 public class InventoryItem: NSManagedObject {
-    @NSManaged var name: String?
-    @NSManaged var units: Int32
-    @NSManaged var manufacturerName: String?
-    @NSManaged var logoUrl: String?
-    @NSManaged private var dateAdded: Date?
-    @NSManaged private var timeOut: Double
+    @NSManaged var name:String?
+    @NSManaged var units:Int32
+    @NSManaged var manufacturerName:String?
+    @NSManaged var logoUrl:String?
+    @NSManaged private var dateAdded:Date?
+    @NSManaged private var timeOut:Double
     
     //for fetches
     public override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
         super.init(entity: entity, insertInto: context)
     }
     
-    init(name: String, units: Int32, manufacturerName: String) {
-        let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
+    init(name:String, units:Int32, manufacturerName:String){
+        let appDelegate:AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
         let entityDescription = NSEntityDescription.entity(forEntityName: InventoryManager.entityName, in: appDelegate.persistentContainer.viewContext)
         super.init(entity: entityDescription!, insertInto: appDelegate.persistentContainer.viewContext)
         
         self.name = name
         self.units = units
         self.manufacturerName = manufacturerName
-        //self.logoUrl = URL(string: "http://www.carlogos.org/logo/Toyota-logo-1989-2560x1440.png")!
-        //self.logoUrl = "http://www.carlogos.org/logo/Toyota-logo-1989-2560x1440.png"
+//        self.logoUrl = URL(string: "http://www.carlogos.org/logo/Toyota-logo-1989-2560x1440.png")!
+//        self.logoUrl = "http://www.carlogos.org/logo/Toyota-logo-1989-2560x1440.png"
         self.dateAdded = Date()
+        self.setTimeOut(timeOut: TimeInterval(20))
     }
     
-    convenience init(name: String, units: Int32, manufacturerName: String, date: Date) {
-		self.init(name: name, units: units, manufacturerName: manufacturerName)
-		self.dateAdded = date
+    convenience init(name:String, units:Int32, manufacturerName:String, date:Date){
+        self.init(name: name, units: units, manufacturerName: manufacturerName)
+        self.dateAdded = date
+        self.setTimeOut(timeOut: TimeInterval(20))
     }
     
-    func setDate(dateAdded: String) {
+    func setDate(dateAdded:String){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         
@@ -47,17 +49,17 @@ public class InventoryItem: NSManagedObject {
     }
     
     //used when dateadded went private
-    func getDateAdded() -> Date {
+    func getDateAdded() -> Date{
         return self.dateAdded!
     }
     
-    func getImage(completion: @escaping (UIImage?) -> Void) {
+    func getImage(completion: @escaping (UIImage?) -> Void){
         let config = URLSessionConfiguration.default
         config.timeoutIntervalForResource = self.timeOut // timeout, in seconds
         //https://commons.wikimedia.org/wiki/File:%27Calypso%27_Panorama_of_Spirit%27s_View_from_%27Troy%27_(Stereo).jpg
         //let url = URL(string: "https://www.nasa.gov/sites/default/files/thumbnails/image/hs-2015-02-a-hires_jpg.jpg")!
         //87MB
-        //let url = URL(string: "https://upload.wikimedia.org/wikipedia/commons/7/72/%27Calypso%27_Panorama_of_Spirit%27s_View_from_%27Troy%27_%28Stereo%29.jpg")!
+//        let url = URL(string: "https://upload.wikimedia.org/wikipedia/commons/7/72/%27Calypso%27_Panorama_of_Spirit%27s_View_from_%27Troy%27_%28Stereo%29.jpg")!
 
         DetermineImageURL().setImageURL(item: self)
         
@@ -71,13 +73,13 @@ public class InventoryItem: NSManagedObject {
             }
             var mydata = data
             if(data == nil){
-                mydata = #imageLiteral(resourceName: "noimage").pngData()
+				mydata = #imageLiteral(resourceName: "noimage").pngData()
             }
             completion(UIImage(data: mydata!)!)
         }.resume()
     }
     
-    func setTimeOut(timeOut: TimeInterval) {
+    func setTimeOut(timeOut:TimeInterval){
         self.timeOut = timeOut
     }
     
@@ -85,3 +87,4 @@ public class InventoryItem: NSManagedObject {
         return self.timeOut
     }
 }
+

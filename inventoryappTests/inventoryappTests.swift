@@ -23,44 +23,32 @@ class inventoryappTests: XCTestCase {
 	override func tearDown() {
 		// Put teardown code here. This method is called after the invocation of each test method in the class.
 		super.tearDown()
-		//InventoryManager.items = []
-	}
-	
-	func testExample() {
-		// This is an example of a functional test case.
-		// Use XCTAssert and related functions to verify your tests produce the correct results.
-	}
-	
-	func testPerformanceExample() {
-		// This is an example of a performance test case.
-		self.measure {
-			// Put the code you want to measure the time of here.
-		}
+		InventoryManager().items = []
 	}
 	
 	func testAddItem() {
-		let item = InventoryItem(name: "Rogue", units: 5, manufacturerName: "Nissan")
-		InventoryManager.add(item: item)
-		
-		XCTAssertEqual(InventoryManager.getCount(), 5)
-	}
-	
-	func testAddItem2() {
-		let item = InventoryItem(name: "Sentra", units: 5, manufacturerName: "Nissan")
-		InventoryManager.add(item: item)
-		
-		XCTAssertEqual(InventoryManager.getCount(), 5)
-	}
-	
-	func testAddItemVerifyDetails() {
-		let item = InventoryItem(name: "Sentra2", units: 4, manufacturerName: "Nissan")
-		InventoryManager.add(item: item)
-		let newItem = InventoryManager.getItem(index: InventoryManager.getCount()-1)
-		
-		XCTAssertEqual(newItem.name, "Sentra2")
-		XCTAssertEqual(newItem.units, 4)
-		XCTAssertEqual(newItem.manufacturerName, "Nissan")
-	}
+        let item = InventoryItem(name: "Rogue", units: 5, manufacturerName: "Nissan")
+        InventoryManager.add(item: item)
+        
+        XCTAssertEqual(InventoryManager.getCount(), 5)
+    }
+    
+    func testAddItem2() {
+        let item = InventoryItem(name: "Sentra", units: 5, manufacturerName: "Nissan")
+        InventoryManager.add(item: item)
+        
+        XCTAssertEqual(InventoryManager.getCount(), 5)
+    }
+    
+    func testAddItemVerifyDetails() {
+        let item = InventoryItem(name: "Sentra2", units: 4, manufacturerName: "Nissan")
+        InventoryManager.add(item: item)
+        let newItem = InventoryManager.getItem(index: InventoryManager.getCount()-1)
+        
+        XCTAssertEqual(newItem.name, "Sentra2")
+        XCTAssertEqual(newItem.units, 4)
+        XCTAssertEqual(newItem.manufacturerName, "Nissan")
+    }
 	
 	func testAddItem35DaysOldVerifyOlderThan25() {
 		InventoryManager.shared.items = []
@@ -85,6 +73,28 @@ class inventoryappTests: XCTestCase {
 		let newItems = InventoryManager.olderThanDays()
 		XCTAssertEqual(newItems.count, 0, "An item is older than \(preferenceDays) days")
 	}
+	
+	//async test
+    func testIntegratedAsyncCallBack(){
+        let item = InventoryItem(name: "Rogue", units: 5, manufacturerName: "Nissan")
+        item.setTimeOut(timeOut: TimeInterval(20))
+        
+        let exp = expectation(description: "getImage() retrieves image and runs callback closure")
+        
+        item.getImage { (image) in
+            DispatchQueue.main.async(){
+                XCTAssertNotNil(image)
+                exp.fulfill()
+            }
+        }
+        
+        waitForExpectations(timeout: item.getTimeOut()) {
+            error in
+            if let error = error {
+                XCTFail("waitForExpectations with timeout error'd: \(error)")
+            }
+        }
+    }
 	
 	//START: unit tests
 	func testDeleteItem() {

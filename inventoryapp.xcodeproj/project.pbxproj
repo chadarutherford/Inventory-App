@@ -24,6 +24,9 @@
 		5497888A1FFB41DD002F74B5 /* InventoryItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549788881FFB41DD002F74B5 /* InventoryItem+CoreDataClass.swift */; };
 		5497888B1FFB41DD002F74B5 /* InventoryItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549788891FFB41DD002F74B5 /* InventoryItem+CoreDataProperties.swift */; };
 		549858241EAEF7CB000F5513 /* inventoryappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549858231EAEF7CB000F5513 /* inventoryappTests.swift */; };
+		639D9F982448C9AA000DF31A /* DataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639D9F972448C9AA000DF31A /* DataStoreProtocol.swift */; };
+		639D9F9B2448CA42000DF31A /* ArrayDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639D9F9A2448CA42000DF31A /* ArrayDataStore.swift */; };
+		639D9F9D2448CD19000DF31A /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639D9F9C2448CD19000DF31A /* CoreDataStore.swift */; };
 		63C5E1312440F21500881B89 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C5E1302440F21500881B89 /* UserDefaultsProtocol.swift */; };
 		63C5E1332440FA8300881B89 /* UserDefaultsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C5E1322440FA8300881B89 /* UserDefaultsMock.swift */; };
 /* End PBXBuildFile section */
@@ -69,6 +72,9 @@
 		549858211EAEF7CB000F5513 /* inventoryappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = inventoryappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		549858231EAEF7CB000F5513 /* inventoryappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inventoryappTests.swift; sourceTree = "<group>"; };
 		549858251EAEF7CB000F5513 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		639D9F972448C9AA000DF31A /* DataStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreProtocol.swift; sourceTree = "<group>"; };
+		639D9F9A2448CA42000DF31A /* ArrayDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayDataStore.swift; sourceTree = "<group>"; };
+		639D9F9C2448CD19000DF31A /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		63C5E1302440F21500881B89 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
 		63C5E1322440FA8300881B89 /* UserDefaultsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +156,15 @@
 			path = inventoryappTests;
 			sourceTree = "<group>";
 		};
+		639D9F992448CA33000DF31A /* Data Stores */ = {
+			isa = PBXGroup;
+			children = (
+				639D9F9A2448CA42000DF31A /* ArrayDataStore.swift */,
+				639D9F9C2448CD19000DF31A /* CoreDataStore.swift */,
+			);
+			path = "Data Stores";
+			sourceTree = "<group>";
+		};
 		639FA9B82440D3500030D2E9 /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +215,7 @@
 		639FA9BD2440D3920030D2E9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				639D9F992448CA33000DF31A /* Data Stores */,
 				639FA9BE2440D39C0030D2E9 /* Core Data */,
 				5495EF0A1E132C7500040DD1 /* InventoryItem.swift */,
 			);
@@ -229,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				63C5E1302440F21500881B89 /* UserDefaultsProtocol.swift */,
+				639D9F972448C9AA000DF31A /* DataStoreProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -392,8 +409,11 @@
 				5497887F1FF17FAF002F74B5 /* PreferenceManager.swift in Sources */,
 				5495EF0D1E132E0800040DD1 /* InventoryManager.swift in Sources */,
 				5495EF0B1E132C7500040DD1 /* InventoryItem.swift in Sources */,
+				639D9F982448C9AA000DF31A /* DataStoreProtocol.swift in Sources */,
 				5495EEE61E13115100040DD1 /* AddViewController.swift in Sources */,
 				5495EED11E1310F400040DD1 /* AppDelegate.swift in Sources */,
+				639D9F9D2448CD19000DF31A /* CoreDataStore.swift in Sources */,
+				639D9F9B2448CA42000DF31A /* ArrayDataStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
